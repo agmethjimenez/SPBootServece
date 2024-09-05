@@ -29,4 +29,8 @@ public class UsuarioService {
     public void borrarUsuario(Long id){
         UserRepository.deleteById(id);
     }
+
+    public List<Usuario> buscarUsuariosPorNombre(String username, String email) {
+        return UserRepository.findByUsernameContainingIgnoreCaseAndEmailContainingIgnoreCase(username, email);
+    }
 }

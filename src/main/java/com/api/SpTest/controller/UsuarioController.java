@@ -25,6 +25,14 @@ public class UsuarioController {
         return usuarioService.getUsuario(id);
 
     }
+    @GetMapping(path = "/buscar-nombre")
+
+    public List<Usuario> BuscarUsuarioEmail(@RequestParam(value = "nm",required = false) String nombre, @RequestParam(value = "mail", required = false) String email){
+        String nombreBusqueda = (nombre != null) ? nombre : "";
+        String emailBusqueda = (email != null) ? email : "";
+
+        return usuarioService.buscarUsuariosPorNombre(nombreBusqueda, emailBusqueda);
+    }
 
     @PostMapping
     public void postUsuario(@RequestBody Usuario usuario){
